@@ -26,18 +26,17 @@
   </thead>
   <tbody>
     
-      @foreach($students as $std)
-        <tr>
-      <th scope="row">{{$std['student_id']}}</th>
-      <td>{{$std['First_Name']}}</td>
-     <td>{{$std['Last_Name']}}</td>
-      <td>{{$std['Email']}}</td>
-      <td>{{$std['Address']}}</td>
-        <td>{{$std['Age']}}</td>
-          <td>{{$std['Class']}}</td>
-            <td>{{$std['Gender']}}</td>
+     
+       <tr>
+      <th scope="row">{{$student['student_id']}}</th>
+    <td>{{$student['First_Name']}}</td>
+     <td>{{$student['Last_Name']}}</td>
+      <td>{{$student['Email']}}</td>
+      <td>{{$student['Address']}}</td>
+        <td>{{$student['Age']}}</td>
+          <td>{{$student['Class']}}</td>
+            <td>{{$student['Gender']}}</td>
     </tr>
-    @endforeach
         
   </tbody>
     </table>
