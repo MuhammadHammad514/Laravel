@@ -39,6 +39,9 @@
       <a href="{{url('/register/create')}}">
         <button class="btn btn-primary float-end mb-3">Add Student</button>
       </a>
+      <a href="{{route('student.export')}}" class="btn btn-primary "> 
+        
+Export StudentData</a>
 
       <table id="mytable" class="table table-striped table-bordered">
         <thead>

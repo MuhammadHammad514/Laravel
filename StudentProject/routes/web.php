@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
-
+use App\Http\Controllers\StudentExportController;
+use App\Http\Controllers\MailController;
 Route::get('/', function () {
     return view('Signup');
 });
@@ -20,3 +21,5 @@ Route::get('/register',[registerController::class,'create']);
 Route::get('/signin', [loginController:: class,'signin']);
 Route::post('/stdSignIn',[loginController:: class,'stdSignIn']);
 Route::post('/stdLogin',[loginController:: class,'stdLogin']);
+Route::get('/exportStudent',[StudentExportController:: class,'exportStudent'])->name('student.export');
+Route::get('/Sendmail',[MailController::class,'Sendmail']);

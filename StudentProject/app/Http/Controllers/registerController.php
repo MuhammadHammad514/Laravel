@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Students;
-
+use App\Jobs\EmailSendJob;
+use App\Jobs\registerStudentJob;
 class registerController extends Controller
 {
     public function create(){
@@ -32,7 +33,7 @@ class registerController extends Controller
         $student->Gender=$request['fgender']; 
         $student->Class=$request['fclass'];
         $student->save();
-
+        EmailSendJob::dispatch($student);
         return view("HomePage");
           
     }
@@ -71,7 +72,7 @@ class registerController extends Controller
         $student->Gender=$request['fgender']; 
         $student->Class=$request['fclass'];
         $student->save();
-
         return redirect('/register/DisplayStudents');
     } 
+
 }
