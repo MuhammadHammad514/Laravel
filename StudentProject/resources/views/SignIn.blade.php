@@ -57,7 +57,7 @@
                  id="signinEmail" 
                  name="email" 
                  placeholder="Enter your email" 
-                 value="{{ old('email') }}">
+                 >
           @error('email')
             <div class="text-danger">{{ $message }}</div>
           @enderror

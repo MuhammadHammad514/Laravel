@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- use App\Models\StudentLogin;
-
+use App\Models\StudentLogin;
+use App\Http\Requests\LoginRequest;
 class loginController extends Controller
 {
        public function signin(){
@@ -36,13 +36,8 @@ class loginController extends Controller
 //     }
 // }
 
-public function stdLogin(Request $request)
+public function stdLogin(LoginRequest $request)
 {
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required|min:8',
-    ]);
-
     $data = $request->all();
     $std = StudentLogin::where('Email', $request->email)->first();
     if ($std) {
@@ -50,23 +45,21 @@ public function stdLogin(Request $request)
          if ($std->Password == $request->password) {
             return view("HomePage");
         } else {
-             return view("SignIn")->with('error', 'Invalid password!');
-         }
+           
+                return redirect()->back()->with('error', 'Invalid password!');
+        }
     
     } else {
-        return view("SignIn")->with('error', 'No student found with this email!');
+            return redirect()->back()->with('error', 'No student found with this email!');
+        
     }
 }
 
-     public function stdSignIn(Request $request){
-          $request->validate([
-        'femail' => 'required|email',
-        'password' => 'required|min:8|confirmed',]);
-        $data=$request->all();
-        // print_r($data);
+     public function stdSignIn(LoginRequest $request){
+    
 
         $std_log= new StudentLogin;
-        $std_log->Email=$request['femail'];
+        $std_log->Email=$request['email'];
         $std_log->Password=$request['password'];
         $std_log->save();
          return view("HomePage");

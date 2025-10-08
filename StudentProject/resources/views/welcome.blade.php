@@ -73,25 +73,41 @@
               <div class="col-md-6">
                 <label for="F_name" class="form-label" >First Name</label>
                 <input type="text" class="form-control" name="F_name" placeholder="Enter your first name"value="{{ $std->First_Name ?? '' }}">
+                 @error('F_name')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
               </div>
               <div class="col-md-6">
                 <label for="L_name" class="form-label">Last Name</label>
                 <input type="text" class="form-control" name="L_name" placeholder="Enter your last name"value="{{ $std->Last_Name ?? '' }}">
+                 @error('L_name')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
               </div>
 
               <div class="col-12">
-                <label for="femail" class="form-label">Email</label>
-                <input type="email" name="femail" class="form-control" placeholder="example@email.com"value="{{ $std->Email ?? '' }}">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="example@email.com"value="{{ $std->Email??'' }}">
+
+                 @error('email')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
               </div>
 
               <div class="col-12">
                 <label for="faddress" class="form-label">Address</label>
                 <input type="text" class="form-control" name="faddress" placeholder="House #, Street, City"value="{{ $std->Address ?? '' }}">
+                 @error('faddress')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
               </div>
 
               <div class="col-md-4">
                 <label for="fage" class="form-label"  >Age</label>
                 <input type="number" class="form-control" value="{{ $std->Age ?? '' }}" name="fage" placeholder="18">
+                 @error('fage')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
               </div>
 
               <div class="col-md-4">
@@ -101,11 +117,17 @@
                   <option>Male</option>
                   <option>Female</option>
                 </select>
+                 @error('fgender')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
               </div>
 
               <div class="col-md-4">
                 <label for="fclass" class="form-label">Class</label>
                 <input type="text" class="form-control" value="{{ $std->Class ?? '' }}" name="fclass" placeholder="e.g. 11th">
+               @error('fclass')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
               </div>
 
               <div class="col-12">

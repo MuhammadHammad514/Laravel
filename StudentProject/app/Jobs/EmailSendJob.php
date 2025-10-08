@@ -17,13 +17,6 @@ class EmailSendJob implements ShouldQueue
     public function __construct($registerStd)
     {
         $this->registerStudent=$registerStd;
-        // $name= $this->registerStudent->First_Name;
-        // $msg=" Hi {$name},
-        // Welcome to our Student Portal! 🎉
-        // We are excited to have you join our learning community.";
-        // $subject="Welcome to Our Student Portal! 🎓 ";
-        // Mail::to($this->registerStudent->Email)->send(new WecomeEmail ($msg,$subject));
-    
        }
 
     /**
@@ -31,7 +24,7 @@ class EmailSendJob implements ShouldQueue
      */
     public function handle(): void
     {
-          $name = $this->registerStudent->First_Name;
+        $name = $this->registerStudent->First_Name;
         $msg = "Hi {$name},
         Welcome to our Student Portal! 🎉
         We are excited to have you join our learning community.";

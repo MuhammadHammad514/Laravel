@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Students;
 use App\Jobs\EmailSendJob;
 use App\Jobs\registerStudentJob;
+use App\Http\Requests\StudentAddRequest;
 class registerController extends Controller
 {
     public function create(){
@@ -14,20 +15,11 @@ class registerController extends Controller
         $data=compact('url' ,'title');
         return view('welcome')->with($data);
     }
-    public function register(Request $request){
-        $request->validate([
-            'F_name'=>'required',
-            'L_name'=>'required',
-            'femail'=>'required|email',
-            'faddress'=>'required',
-            'fage'=>'required',
-            'fgender'=>'required',
-            'fclass'=>'required'
-        ]);
+    public function register(StudentAddRequest $request){
         $student=new Students;
         $student->First_Name=$request['F_name'];
         $student->Last_Name=$request['L_name'];
-        $student->Email=$request['femail'];
+        $student->Email=$request['email'];
         $student->Address=$request['faddress'];
         $student->Age=$request['fage'];
         $student->Gender=$request['fgender']; 
@@ -62,11 +54,11 @@ class registerController extends Controller
         }
 
     }
-    public function update($id,Request $request){
+    public function update($id,StudentAddRequest $request){
         $student=Students::find($id);
          $student->First_Name=$request['F_name'];
         $student->Last_Name=$request['L_name'];
-        $student->Email=$request['femail'];
+        $student->Email=$request['email'];
         $student->Address=$request['faddress'];
         $student->Age=$request['fage'];
         $student->Gender=$request['fgender']; 
