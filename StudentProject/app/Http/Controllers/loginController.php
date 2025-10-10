@@ -36,7 +36,7 @@ class loginController extends Controller
 //     }
 // }
 
-public function stdLogin(LoginRequest $request)
+public function stdLogin(Request $request)
 {
     $data = $request->all();
     $std = StudentLogin::where('Email', $request->email)->first();
@@ -44,7 +44,8 @@ public function stdLogin(LoginRequest $request)
         
          if ($std->Password == $request->password) {
             return view("HomePage");
-        } else {
+        } 
+        else {
            
                 return redirect()->back()->with('error', 'Invalid password!');
         }
@@ -64,5 +65,7 @@ public function stdLogin(LoginRequest $request)
         $std_log->save();
          return view("HomePage");
        }
+
+       
 
 }
